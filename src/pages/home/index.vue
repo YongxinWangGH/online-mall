@@ -1,6 +1,8 @@
 <template>
 	<div class="home">
-		<header class="g-header-container"></header>
+		<header class="g-header-container">
+			<home-header></home-header>
+		</header>
 		<div></div>
 		<div class="g-backtop-container"></div>
 		<router-view></router-view>
@@ -8,8 +10,12 @@
 </template>
 
 <script>
+	import HomeHeader from './header'
 	export default {
-		name: 'Home'
+		name: 'Home',
+		components: {
+			HomeHeader
+		}
 	}
 </script>
 
@@ -20,6 +26,10 @@
 		height: 100%;
 		overflow: hidden;
 		background-color: $bgc-theme;
+
+		.g-header-container{
+			width: 100%;
+		}
 	}
 	
 </style>
