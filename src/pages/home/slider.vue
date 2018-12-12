@@ -5,6 +5,7 @@
 			:loop="loop"
 			:interval="interval"
 			:pagination="pagination"
+			v-if="sliders.length"
 		>
 			<swiper-slide 
 				v-for="(item, index) of sliders"
@@ -24,6 +25,7 @@
 	import MeSlider from 'base/slider'
 	import {swiperSlide} from 'vue-awesome-swiper'
 	import {sliderOptions} from './config'
+	import {getHomeSlider} from 'api/home'
 
 	export default {
 		name: 'HomeSlider',
@@ -37,21 +39,34 @@
 				loop: sliderOptions.loop,
 				interval: sliderOptions.interval,
 				pagination: sliderOptions.pagination,
-				sliders:[{
-		         'linkUrl':'https://www.imooc.com',
-		         'picUrl':require('./1.jpg')
-		        },
-		        {
-		         'linkUrl':'https://www.imooc.com',
-		         'picUrl':require('./2.jpg')
-		        },
-		        {
-		         'linkUrl':'https://www.imooc.com',
-		         'picUrl':require('./3.jpg')
-		        },{
-		         'linkUrl':'https://www.imooc.com',
-		         'picUrl':require('./4.jpg')
-		        }]
+				sliders: []
+				// sliders:[{
+		  //        'linkUrl':'https://www.imooc.com',
+		  //        'picUrl':require('./1.jpg')
+		  //       },
+		  //       {
+		  //        'linkUrl':'https://www.imooc.com',
+		  //        'picUrl':require('./2.jpg')
+		  //       },
+		  //       {
+		  //        'linkUrl':'https://www.imooc.com',
+		  //        'picUrl':require('./3.jpg')
+		  //       },{
+		  //        'linkUrl':'https://www.imooc.com',
+		  //        'picUrl':require('./4.jpg')
+		  //       }]
+			}
+		},
+
+		created(){
+			this.getSliders();
+		}, 
+
+		methods: {
+			getSliders(){
+				getHomeSlider().then(res => {
+					this.sliders = res;
+				})
 			}
 		}
 	}
