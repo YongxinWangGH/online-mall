@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {SUCC_CODE, TIMEOUT} from './config'
+import {SUCC_CODE, TIMEOUT, HOME_RECOMMEND_PAGE_SIZE} from './config'
 import jsonp from 'assets/js/jsonp'
 
 export const getHomeSlider = () => {
@@ -29,4 +29,36 @@ export const getHomeSlider = () => {
 			}, 1000);
 		});
 	})
+}
+
+export const getHomeRecommend = (page=1, psize=HOME_RECOMMEND_PAGE_SIZE) => {
+	const url = "https://ju.taobao.com/json/tg/ajaxGetItemsV2.json";
+	const params = {
+		page,
+		psize,
+		type: 0,
+		frontCatId: ''
+	};
+
+	return jsonp(url, params, {
+		param: 'callback'
+	}).then(res => {
+		if (res.code === '200') {
+			return res;
+		}
+
+		throw new Error('Failed to get the data of Recommend component');
+	}).catch(err => {
+		if (err){
+			console.log(err);
+		}
+	}).then(res => {
+		return new Promise(resolve => {
+			setTimeout(() => {
+				resolve(res);
+			}, 1000)
+		});
+		
+	});
+
 }
