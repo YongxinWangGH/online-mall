@@ -41,8 +41,10 @@
 		}
 
 		&-item {
-			// flex:1;
+			flex:1;
 			width: 20%;
+			max-width: 20%;
+			min-width: 20%;
 			margin-bottom: 15px;
 
 		}
