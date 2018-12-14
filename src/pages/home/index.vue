@@ -3,7 +3,7 @@
 		<header class="g-header-container">
 			<home-header></home-header>
 		</header>
-		<me-scroll :data="recommends">	
+		<me-scroll :data="recommends" pullDown @pull-down="pullToRefresh">	
 			<home-slider></home-slider>
 			<home-nav/>
 			<home-recommend @loaded="getRecommends"/>
@@ -41,6 +41,13 @@
 
 			getRecommends(recommends){
 				this.recommends = recommends;
+			},
+
+			pullToRefresh(end){
+				setTimeout(() => {
+					console.log('aaa');
+					end();
+				}, 1000);
 			}
 		}
 	}
