@@ -3,10 +3,10 @@
 		<header class="g-header-container">
 			<home-header></home-header>
 		</header>
-		<me-scroll>	
+		<me-scroll :data="recommends">	
 			<home-slider></home-slider>
 			<home-nav/>
-			<home-recommend/>
+			<home-recommend @loaded="getRecommends"/>
 		</me-scroll>
 		<div class="g-backtop-container"></div>
 		<router-view></router-view>
@@ -28,6 +28,20 @@
 			MeScroll,
 			HomeNav,
 			HomeRecommend
+		},
+		data(){
+			return {
+				recommends: []
+			}
+		},
+		methods: {
+			updataScroll(){
+
+			},
+
+			getRecommends(recommends){
+				this.recommends = recommends;
+			}
 		}
 	}
 </script>
