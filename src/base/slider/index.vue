@@ -49,22 +49,15 @@
 				}
 			}
 		},
+
+		created(){
+			this.init();
+		},
+
 		data(){
 			return {
 				keyId: Math.random(),
-				swiperOption: {
-		          watchOverflow: true,
-		          direction: this.direction,
-		          autoplay: this.interval ? {
-		            delay: this.interval,
-		            disableOnInteraction: false
-		          } : false,
-		          slidesPerView: 1,
-		          loop: this.loop,
-		          pagination: {
-		            el: this.pagination ? '.swiper-pagination' : null
-		          }
-		      }
+				
 			}
 		},
 
@@ -74,6 +67,25 @@
 					return;
 				}
 				this.keyId = Math.random();
+				this.swiperOption.loop = newData.length <= 1 ? false : this.loop
+			}
+		},
+
+		methods: {
+			init(){
+				this.swiperOption = {
+		          watchOverflow: true,
+		          direction: this.direction,
+		          autoplay: this.interval ? {
+		            delay: this.interval,
+		            disableOnInteraction: false
+		          } : false,
+		          slidesPerView: 1,
+		          loop: this.data.length <= 1 ? false : this.loop,
+		          pagination: {
+		            el: this.pagination ? '.swiper-pagination' : null
+		          }
+		      }
 			}
 		}
 	}
