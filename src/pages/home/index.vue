@@ -3,8 +3,12 @@
 		<header class="g-header-container">
 			<home-header></home-header>
 		</header>
-		<me-scroll :data="recommends" pullDown @pull-down="pullToRefresh">	
-			<home-slider></home-slider>
+		<me-scroll 
+			:data="recommends" 
+			pullDown 
+			@pull-down="pullToRefresh"
+		>	
+			<home-slider ref="slider"></home-slider>
 			<home-nav/>
 			<home-recommend @loaded="getRecommends"/>
 		</me-scroll>
@@ -44,10 +48,11 @@
 			},
 
 			pullToRefresh(end){
-				setTimeout(() => {
-					console.log('aaa');
-					end();
-				}, 1000);
+				// setTimeout(() => {
+				// 	console.log('aaa');
+				// 	end();
+				// }, 1000);
+				this.$refs.slider.update().then(end);
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <template>
-	<swiper :options="swiperOption">
+	<swiper :options="swiperOption" :key="keyId">
 		<slot></slot>
 		<div class="swiper-pagination" v-if="pagination" slot="pagination"></div>
 	</swiper>
@@ -40,10 +40,18 @@
 			pagination: {
 				type: Boolean,
 				default: true
+			},
+
+			data: {
+				type: Array,
+				default(){
+					return [];
+				}
 			}
 		},
 		data(){
 			return {
+				keyId: Math.random(),
 				swiperOption: {
 		          watchOverflow: true,
 		          direction: this.direction,
@@ -57,6 +65,15 @@
 		            el: this.pagination ? '.swiper-pagination' : null
 		          }
 		      }
+			}
+		},
+
+		watch: {
+			data(newData){
+				if(newData.length === 0){
+					return;
+				}
+				this.keyId = Math.random();
 			}
 		}
 	}
