@@ -6,11 +6,13 @@
 		<me-scroll 
 			:data="recommends" 
 			pullDown 
+			pullUp
 			@pull-down="pullToRefresh"
+			@pull-up="pullToLoadMore"
 		>	
 			<home-slider ref="slider"></home-slider>
 			<home-nav/>
-			<home-recommend @loaded="getRecommends"/>
+			<home-recommend @loaded="getRecommends" ref="recommend"/>
 		</me-scroll>
 		<div class="g-backtop-container"></div>
 		<router-view></router-view>
@@ -53,6 +55,15 @@
 				// 	end();
 				// }, 1000);
 				this.$refs.slider.update().then(end);
+			},
+
+			pullToLoadMore(end){
+				this.$refs.recommend.update().then(end).catch(err => {
+					if(err){
+						console.log(err);
+					}
+					end();
+				});
 			}
 		}
 	}

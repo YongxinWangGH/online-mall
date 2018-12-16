@@ -7,6 +7,9 @@
 			<swiper-slide>
 				<slot></slot>
 			</swiper-slide>
+			<div class="mine-scroll-pull-up" v-if="pullUp">
+				<me-loading :text="pullUpText" inline ref="pullUpLoading"/>
+			</div>
 			<div class="swiper-scrollbar" v-if="scrollbar" slot="scrollbar"></div>
 		</swiper>
 
@@ -46,12 +49,17 @@
 			pullDown: {
 				type: Boolean,
 				default: false
+			},
+			pullUp: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data(){
 			return {
 				pulling: false,
 				pullDownText: PULL_DOWN_TEXT_INIT,
+				pullUpText: PULL_UP_TEXT_INIT,
 				swiperOption:{
 					direction: 'vertical',
 			         slidesPerView: 'auto',
@@ -97,6 +105,18 @@
 					}else {
 						this.$refs.pullDownLoading.setText(PULL_DOWN_TEXT_INIT);
 					}
+				}else if(swiper.isEnd){
+					if(!this.pullUp){
+						return;
+					}
+
+					const isPullUp = Math.abs(swiper.translate) + swiper.height - PULL_UP_HEIGHT > parseInt(swiper.$wrapperEl.css('height'));
+
+					if(isPullUp){
+						this.$refs.pullUpLoading.setText(PULL_UP_TEXT_START);
+					}else{
+						this.$refs.pullUpLoading.setText(PULL_UP_TEXT_INIT);
+					}
 				}
 			},
 
@@ -119,6 +139,23 @@
 			        swiper.params.virtualTranslate = true;
 			        this.$refs.pullDownLoading.setText(PULL_DOWN_TEXT_ING);
 			        this.$emit('pull-down', this.pullDownEnd);
+				}else if(swiper.isEnd){
+					const totalHeight = parseInt(swiper.$wrapperEl.css('height'));
+          			const isPullUp = Math.abs(swiper.translate) + swiper.height - PULL_UP_HEIGHT > totalHeight;
+
+          			if(isPullUp){
+          				if(!this.pullUp){
+          					return;
+          				}
+
+          				this.pulling = true;
+			            swiper.allowTouchMove = false; // 禁止触摸
+			            swiper.setTransition(swiper.params.speed);
+			            swiper.setTranslate(-(totalHeight + PULL_UP_HEIGHT - swiper.height));
+			            swiper.params.virtualTranslate = true; // 定住不给回弹
+			            this.$refs.pullUpLoading.setText(PULL_UP_TEXT_ING);
+			            this.$emit('pull-up', this.pullUpEnd);
+          			} 
 				}
 			},
 
@@ -131,7 +168,15 @@
 				swiper.allowTouchMove = true;
 		        swiper.setTransition(swiper.params.speed);
 		        swiper.setTranslate(0); //set the height to 100px		        
-			}
+			},
+
+			pullUpEnd() {
+		        const swiper = this.$refs.swiper.swiper;
+		        this.pulling = false;
+		        this.$refs.pullUpLoading.setText(PULL_UP_TEXT_END);
+		        swiper.params.virtualTranslate = false;
+		        swiper.allowTouchMove = true;
+		      }
 		}
 	}
 </script>
@@ -154,6 +199,14 @@
 		left:0;
 		bottom: 100%;
 		height: 80px;
+		width: 100%;
+	}
+
+	.mine-scroll-pull-up{
+		position: absolute;
+		left: 0;
+		top: 100%;
+		height: 30px;
 		width: 100%;
 	}
 </style>
