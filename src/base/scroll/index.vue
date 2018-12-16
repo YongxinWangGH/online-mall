@@ -55,26 +55,30 @@
 				default: false
 			}
 		},
-		data(){
-			return {
-				pulling: false,
-				pullDownText: PULL_DOWN_TEXT_INIT,
-				pullUpText: PULL_UP_TEXT_INIT,
-				swiperOption:{
-					direction: 'vertical',
-			         slidesPerView: 'auto',
-			         freeMode: true,
-			         setWrapperSize: true,
-			         scrollbar: {
-			            el: this.scrollbar ? '.swiper-scrollbar' : null,
-			            hide: true
-	      			 },
-	      			 on: {
-	      			 	sliderMove: this.scroll,
-	      			 	touchEnd: this.touchEnd
-	      			 }
-				}
-			}
+		// data(){
+		// 	return {
+		// 		pulling: false,
+		// 		pullDownText: PULL_DOWN_TEXT_INIT,
+		// 		pullUpText: PULL_UP_TEXT_INIT,
+		// 		swiperOption:{
+		// 			direction: 'vertical',
+		// 	         slidesPerView: 'auto',
+		// 	         freeMode: true,
+		// 	         setWrapperSize: true,
+		// 	         scrollbar: {
+		// 	            el: this.scrollbar ? '.swiper-scrollbar' : null,
+		// 	            hide: true
+	 //      			 },
+	 //      			 on: {
+	 //      			 	sliderMove: this.scroll,
+	 //      			 	touchEnd: this.touchEnd
+	 //      			 }
+		// 		}
+		// 	}
+		// },
+
+		created(){
+			this.init();
 		},
 
 		watch: {
@@ -88,8 +92,36 @@
 				this.$refs.swiper && this.$refs.swiper.swiper.update();
 			},
 
+			init(){
+				this.pulling = false;
+				this.pullDownText = PULL_DOWN_TEXT_INIT;
+				this.pullUpText = PULL_UP_TEXT_INIT;
+				// pullDownText: 'test',
+				this.swiperOption = {
+					direction: 'vertical',
+			         slidesPerView: 'auto',
+			         freeMode: true,
+			         setWrapperSize: true,
+			         scrollbar: {
+			            el: this.scrollbar ? '.swiper-scrollbar' : null,
+			            hide: true
+          			 },
+          			 on: {
+          			 	sliderMove: this.scroll,
+          			 	touchEnd: this.touchEnd,
+          			 	transitionEnd: this.scrollEnd
+          			 }
+				}
+			},
+
+			scrollToTop(speed, runCallbacks){
+				this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speed, runCallbacks);
+			},
+
 			scroll(){
 				const swiper = this.$refs.swiper.swiper;
+
+				this.$emit('scroll', swiper.translate, this.$refs.swiper.swiper);
 
 				if(this.pulling){
 					return;
@@ -167,7 +199,10 @@
 				swiper.params.virtualTranslate = false;
 				swiper.allowTouchMove = true;
 		        swiper.setTransition(swiper.params.speed);
-		        swiper.setTranslate(0); //set the height to 100px		        
+		        swiper.setTranslate(0); //set the height to 100px	
+		        setTimeout(() => {
+		        	this.$emit('pull-down-transition-end');
+		        }, swiper.params.speed);	        
 			},
 
 			pullUpEnd() {
@@ -176,7 +211,11 @@
 		        this.$refs.pullUpLoading.setText(PULL_UP_TEXT_END);
 		        swiper.params.virtualTranslate = false;
 		        swiper.allowTouchMove = true;
-		      }
+		    },
+
+		    scrollEnd(){
+		    	this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speed, runCallbacks);
+		    }
 		}
 	}
 </script>
