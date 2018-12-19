@@ -214,7 +214,8 @@
 		    },
 
 		    scrollEnd(){
-		    	this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speed, runCallbacks);
+		    	// this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speed, runCallbacks);
+		    	this.$emit('scroll-end', this.$refs.swiper.swiper.translate, this.$refs.swiper.swiper, this.pulling);
 		    }
 		}
 	}
