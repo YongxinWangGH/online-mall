@@ -3,6 +3,7 @@
 		<header class="g-header-container">
 			<home-header :class="{'header-transition': isHeaderTransition}" ref="header"></home-header>
 		</header>
+		<!-- scrollbar -->
 		<me-scroll 
 			:data="recommends" 
 			pullDown 
@@ -52,14 +53,15 @@
 			}
 		},
 		methods: {
-			updataScroll(){
+			// updataScroll(){
 
-			},
+			// },
 
 			getRecommends(recommends){
 				this.recommends = recommends;
 			},
 
+			// pull up 
 			pullToRefresh(end){
 				// setTimeout(() => {
 				// 	console.log('aaa');
@@ -68,6 +70,7 @@
 				this.$refs.slider.update().then(end);
 			},
 
+			// pull down
 			pullToLoadMore(end){
 				this.$refs.recommend.update().then(end).catch(err => {
 					if(err){
@@ -96,6 +99,7 @@
 				this.$refs.scroll && this.$refs.scroll.scrollToTop();
 			},
 
+			// change the visibility of header
 			changeHeaderStatus(translate){
 				if(translate > 0){
 					this.$refs.header.hide();

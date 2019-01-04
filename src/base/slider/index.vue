@@ -66,7 +66,7 @@
 				if(newData.length === 0){
 					return;
 				}
-				this.keyId = Math.random();
+				this.keyId = Math.random(); //if the sliders have changed, this me-slider component needs refreshing
 				this.swiperOption.loop = newData.length <= 1 ? false : this.loop
 			}
 		},

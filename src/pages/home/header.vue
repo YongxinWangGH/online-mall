@@ -1,8 +1,8 @@
 <template>
 
-	<me-navbar class="header" title="title" v-show="visible">
+	<me-navbar class="header" title="" v-show="visible">
 		<i class="iconfont icon-scan" slot="left"></i>
-		<div slot="center">search input</div>
+		<!-- <div slot="center">search input</div> -->
 		<i class="iconfont icon-msg" slot=right></i>
 	</me-navbar>
 

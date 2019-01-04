@@ -73,10 +73,16 @@
 			},
 
 			getSliders(){
-				return getHomeSlider().then(res => {
-					this.sliders = res;
+				return getHomeSlider().then(data => {
+					this.sliders = data;
 				})
 			}
+
+			// getSliders(){
+			// 	getHomeSlider().then( data => {
+			// 		this.sliders = data;
+			// 	});
+			// }
 		}
 	}
 </script>

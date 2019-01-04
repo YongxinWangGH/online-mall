@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="g-container">
+  <div id="app1" class="g-container">
     <div class="g-view-container">
     	<router-view/>
     </div>
-    <div class="g-footer-container">
+    <div class="g-footer-container"> 
     	<c-tabbar/>
     </div>
   </div>

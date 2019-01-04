@@ -181,10 +181,10 @@
           				}
 
           				this.pulling = true;
-			            swiper.allowTouchMove = false; // 禁止触摸
+			            swiper.allowTouchMove = false; 
 			            swiper.setTransition(swiper.params.speed);
 			            swiper.setTranslate(-(totalHeight + PULL_UP_HEIGHT - swiper.height));
-			            swiper.params.virtualTranslate = true; // 定住不给回弹
+			            swiper.params.virtualTranslate = true; // keep a fixed height of the loading area
 			            this.$refs.pullUpLoading.setText(PULL_UP_TEXT_ING);
 			            this.$emit('pull-up', this.pullUpEnd);
           			} 
