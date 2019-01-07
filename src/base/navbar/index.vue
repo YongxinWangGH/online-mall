@@ -3,9 +3,9 @@
 		<div class="mine-navbar-left" v-if="$slots.left">
 			<slot name="left"></slot>
 		</div>
-		<!-- <div class="mine-navbar-center" v-if="$slots.center">
+		<div class="mine-navbar-center" v-if="$slots.center">
 			<slot name="center"></slot>
-		</div> -->
+		</div>
 		<div class="mine-navbar-right" v-if="$slots.right">
 			<slot name="right"></slot>
 		</div>

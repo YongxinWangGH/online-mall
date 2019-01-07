@@ -1,5 +1,5 @@
 <template>
-  <div id="app1" class="g-container">
+  <div id="app" class="g-container">
     <div class="g-view-container">
     	<router-view/>
     </div>
