@@ -5,9 +5,11 @@
 		</header>
 		<div class="g-content-container">
 			<div class="sidebar">
-				
+				<category-tab @switch-tab="getCurrentId"/>
 			</div>
-			<div class="main"></div>
+			<div class="main">
+				<category-content :curId="curId"/>
+			</div>
 		</div>
 	</div>
 </template>
@@ -23,6 +25,16 @@
 			CategoryHeader,
 			CategoryTab,
 			CategoryContent
+		},
+		data(){
+			return {
+				curId: ''
+			}
+		},
+		methods: {
+			getCurrentId(id){
+				this.curId = id;
+			}
 		}
 	}
 </script>
@@ -41,6 +53,7 @@
 	}
 	.g-content-container {
 		display: flex;
+		overflow: hidden;
 	}
 
 	.sidebar {
