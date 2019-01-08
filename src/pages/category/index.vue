@@ -29,7 +29,7 @@
 		data(){
 			return {
 				curId: ''
-			}
+			};
 		},
 		methods: {
 			getCurrentId(id){
