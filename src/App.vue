@@ -1,7 +1,11 @@
 <template>
   <div id="app" class="g-container">
     <div class="g-view-container">
-    	<router-view/>
+      <!-- the webpage dose not need to reload every time it switches back from another page -->
+      <keep-alive> 
+        <router-view/>
+      </keep-alive>
+    	
     </div>
     <div class="g-footer-container"> 
     	<c-tabbar/>
