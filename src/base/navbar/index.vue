@@ -32,12 +32,13 @@
 <style lang="scss" scoped>
 @import "~assets/scss/mixins";
 	.mine-navbar {
+		position: relative;
 		@include flex-between();
 		// width: 100%;
 		height: $navbar-height;
 		background-color: #fff;
 		
-		z-index: $navbar-z-index;
+		// z-index: $navbar-z-index;
 
 		&-left {
 			margin-left:10px;
@@ -51,7 +52,7 @@
 			margin:0 10px;
 			flex:1;
 
-			~ .mine-nav-right{
+			~ .mine-navbar-right{
 				position: static;
 			}
 		}

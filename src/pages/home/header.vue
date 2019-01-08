@@ -2,7 +2,13 @@
 
 	<me-navbar class="header" title="" v-show="visible">
 		<i class="iconfont icon-scan" slot="left"></i>
-		<!-- <div slot="center">search input</div> -->
+		<me-search-box
+			placeholder="Hot products up to 50% off"
+			slot="center"
+			@query="getQuery"
+			@click.native="goToSearch"
+			fake
+		/>
 		<i class="iconfont icon-msg" slot=right></i>
 	</me-navbar>
 
@@ -10,15 +16,18 @@
 
 <script>
 	import MeNavbar from 'base/navbar'
+	import MeSearchBox from 'base/search-box'
 
 	export default {
 		name: 'HomeHeader',
 		components: {
-			MeNavbar
+			MeNavbar,
+			MeSearchBox
 		},
 		data(){
 			return{
 				visible: true
+				// searchText: 'Hot products up to 50% off'
 			}
 		},
 		methods:{
@@ -28,6 +37,12 @@
 			},
 			hide(){
 				this.visible = false;
+			},
+			getQuery(query){
+				console.log(query);
+			},
+			goToSearch(){
+				this.$router.push('/search');
 			}
 		}
 
