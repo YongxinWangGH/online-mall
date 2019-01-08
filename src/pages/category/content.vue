@@ -5,7 +5,7 @@
 				<me-loading/>
 			</div>
 		</div>
-		<me-scroll ref="scroll">
+		<me-scroll ref="scroll" @scroll-end="scrollEnd">
 			<div class="content">
 				<div class="pic" v-if="content.banner">
 					<a :href="content.banner.linkUrl" class="pic-link">
@@ -78,20 +78,23 @@
 	  },
 	  methods: {
 	    	getContent(id){
-	    		return getCategoryContent(id).then(data => {
-	    			if(data){
-	    				this.content = data;
-	    			}
-	    	})       
-	  },
+  	    		return getCategoryContent(id).then(data => {
+  	    			if(data){
+  	    				this.content = data;
+  	    			}
+  	    	  })      
+	       },
 
-    updateScroll(){
-          this.$refs.scroll && this.$refs.scroll.update();
-    },
-	  backToTop(speed) {
-	        	this.$refs.scroll && this.$refs.scroll.scrollToTop(speed);
-	        }
-	  }  
+        updateScroll(){
+              this.$refs.scroll && this.$refs.scroll.update();
+        },
+    	  backToTop(speed) {
+    	        this.$refs.scroll && this.$refs.scroll.scrollToTop(speed);
+    	  },
+        scrollEnd(translate, scroll){
+            this.isBacktopVisible = translate < 0 && -translate > scroll.height
+        }
+    }  
 	}
 </script>
 
