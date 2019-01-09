@@ -7,6 +7,9 @@
 			<div class="g-content-container">
 				<me-scroll>
 					<search-hot/>
+					<search-history
+						@show-confirm="showConfirm"
+					/>
 				</me-scroll>
 			</div>
 		</div>
@@ -18,7 +21,7 @@
 	// import MeConfirm from 'base/confirm';
 	import SearchHeader from './header';
 	import SearchHot from './hot';
-	// import SearchHistory from './history';
+	import SearchHistory from './history';
 	// import SearchResult from './result';
 
 	export default {
@@ -26,7 +29,13 @@
 		components: {
 			MeScroll,
 			SearchHeader,
-			SearchHot
+			SearchHot,
+			SearchHistory
+		},
+		methods: {
+			showConfirm(){
+				
+			}
 		}
 	}
 </script>
