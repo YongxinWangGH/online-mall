@@ -43,7 +43,10 @@
 			removeItem(item){
 				this.keywords = this.keywords.filter(val => val !== item);
 				storage.set(SEARCH_HISTORY_KEYWORD_KEY, this.keywords);
-				this.$emit('remove-item', item); //update the scroll bar
+				setTimeout(() => {
+					this.$emit('remove-item', item); //update the scroll bar
+				},100)
+				
 			},
 			showConfirm(){
 				this.$emit('show-confirm');

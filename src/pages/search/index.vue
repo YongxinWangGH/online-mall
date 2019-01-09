@@ -5,12 +5,13 @@
 				<search-header @query="getQuery"/>
 			</header>
 			<div class="g-content-container">
-				<me-scroll>
-					<search-hot v-show="!query"/>
+				<me-scroll ref="scroll">
+					<search-hot @loaded="updateScroll" v-show="!query"/>
 					<search-history
 						@show-confirm="showConfirm"
 						ref="history"
 						v-show="!query"
+						@remove-item="updateScroll"
 					/>
 					<search-result :query="query" v-show="query"/>
 				</me-scroll>
@@ -57,6 +58,9 @@
 			},
 			getQuery(query){
 				this.query = query;
+			},
+			updateScroll(){
+				this.$refs.scroll.update();
 			}
 		}
 	}

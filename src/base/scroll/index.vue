@@ -89,7 +89,11 @@
 
 		methods: {
 			update(){
-				this.$refs.swiper && this.$refs.swiper.swiper.update();
+				// In case the dom has not been displayed correctly when the data changes
+				this.$nextTick(() => {
+					this.$refs.swiper && this.$refs.swiper.swiper.update();
+				});
+				
 			},
 
 			init(){
