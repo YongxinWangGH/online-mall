@@ -2,15 +2,17 @@
 	<transition name="search">
 		<div class="search">
 			<header class="g-header-container">
-				<search-header/>
+				<search-header @query="getQuery"/>
 			</header>
 			<div class="g-content-container">
 				<me-scroll>
-					<search-hot/>
+					<search-hot v-show="!query"/>
 					<search-history
 						@show-confirm="showConfirm"
 						ref="history"
+						v-show="!query"
 					/>
+					<search-result :query="query" v-show="query"/>
 				</me-scroll>
 			</div>
 			<me-confirm
@@ -28,7 +30,7 @@
 	import SearchHeader from './header';
 	import SearchHot from './hot';
 	import SearchHistory from './history';
-	// import SearchResult from './result';
+	import SearchResult from './result';
 
 	export default {
 		name: 'Search',
@@ -37,7 +39,13 @@
 			SearchHeader,
 			SearchHot,
 			SearchHistory,
-			MeConfirm
+			MeConfirm,
+			SearchResult
+		},
+		data(){
+			return {
+				query: ''
+			}
 		},
 		methods: {
 			showConfirm(){
@@ -46,6 +54,9 @@
 			clearAllSearchHistory(){
 				this.$refs.history.clear();
 				this.$refs.history.update();
+			},
+			getQuery(query){
+				this.query = query;
 			}
 		}
 	}
