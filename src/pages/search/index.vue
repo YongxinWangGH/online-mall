@@ -4,7 +4,11 @@
 			<header class="g-header-container">
 				<search-header/>
 			</header>
-			<div class="g-content-container"></div>
+			<div class="g-content-container">
+				<me-scroll>
+					<search-hot/>
+				</me-scroll>
+			</div>
 		</div>
 	</transition>
 </template>
@@ -13,7 +17,7 @@
 	import MeScroll from 'base/scroll';
 	// import MeConfirm from 'base/confirm';
 	import SearchHeader from './header';
-	// import SearchHot from './hot';
+	import SearchHot from './hot';
 	// import SearchHistory from './history';
 	// import SearchResult from './result';
 
@@ -21,7 +25,8 @@
 		name: 'Search',
 		components: {
 			MeScroll,
-			SearchHeader
+			SearchHeader,
+			SearchHot
 		}
 	}
 </script>

@@ -15,7 +15,7 @@
 	
 
 	export default {
-		name: 'Search',
+		name: 'SearchHeader',
 		components: {
 			MeNavbar,
 			MeSearchBox
