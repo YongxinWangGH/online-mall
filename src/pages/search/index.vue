@@ -9,16 +9,22 @@
 					<search-hot/>
 					<search-history
 						@show-confirm="showConfirm"
+						ref="history"
 					/>
 				</me-scroll>
 			</div>
+			<me-confirm
+				msg="Are you sure to empty the history?"
+				ref="confirm"
+				@confirm="clearAllSearchHistory"
+			/>
 		</div>
 	</transition>
 </template>
 
 <script>
 	import MeScroll from 'base/scroll';
-	// import MeConfirm from 'base/confirm';
+	import MeConfirm from 'base/confirm';
 	import SearchHeader from './header';
 	import SearchHot from './hot';
 	import SearchHistory from './history';
@@ -30,11 +36,16 @@
 			MeScroll,
 			SearchHeader,
 			SearchHot,
-			SearchHistory
+			SearchHistory,
+			MeConfirm
 		},
 		methods: {
 			showConfirm(){
-				
+				this.$refs.confirm.show();
+			},
+			clearAllSearchHistory(){
+				this.$refs.history.clear();
+				this.$refs.history.update();
 			}
 		}
 	}

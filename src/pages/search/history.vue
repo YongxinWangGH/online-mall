@@ -34,6 +34,9 @@
 			this.getKeyWord();
 		},
 		methods: {
+			update(){
+				this.getKeyWord();
+			},
 			getKeyWord(){
 				this.keywords = storage.get(SEARCH_HISTORY_KEYWORD_KEY, []);
 			},
@@ -44,6 +47,9 @@
 			},
 			showConfirm(){
 				this.$emit('show-confirm');
+			},
+			clear(){
+				storage.remove(SEARCH_HISTORY_KEYWORD_KEY);
 			}
 		}
 	}
