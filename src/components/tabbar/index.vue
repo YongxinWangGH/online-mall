@@ -12,9 +12,9 @@
 			<i class="iconfont icon-cart"></i>
 			<span>Shopping Cart</span>
 		</router-link>
-		<router-link class="g-tabbar-item" to="/personal">
+		<router-link class="g-tabbar-item" to="/profile">
 			<i class="iconfont icon-personal"></i>
-			<span>Profile</span>
+			<span>Me</span>
 		</router-link>
 	</div>
 </template>
