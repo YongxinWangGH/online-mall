@@ -7,151 +7,151 @@ export const CATEGORY_CONTENT_UPDATE_TIME_INTERVAL = 10 * 1000; //10s
 // category names
 export const categoryNames = [
   {
-    'name': '热门推荐',
+    'name': 'Recommends',
     'id': 'WQR2006'
   },
   {
-    'name': '慕淘超市',
+    'name': 'Market',
     'id': 'WQ1968'
   },
   {
-    'name': '国际名牌',
+    'name': 'Brands',
     'id': 'WQ1969'
   },
   {
-    'name': '奢侈品',
+    'name': 'Luxury',
     'id': 'WQ1970'
   },
   {
-    'name': '全球购',
+    'name': 'Global',
     'id': 'WQ1971'
   },
   {
-    'name': '男装',
+    'name': 'Men',
     'id': 'WQ1972'
   },
   {
-    'name': '女装',
+    'name': 'Women',
     'id': 'WQ1973'
   },
   {
-    'name': '男鞋',
+    'name': 'Shoes',
     'id': 'WQ1974'
   },
   {
-    'name': '女鞋',
+    'name': 'Clothing',
     'id': 'WQ1975'
   },
   {
-    'name': '内衣配饰',
+    'name': 'Accessary',
     'id': 'WQ1976'
   },
   {
-    'name': '箱包手袋',
+    'name': 'Bag',
     'id': 'WQ1977'
   },
   {
-    'name': '美妆个护',
+    'name': 'Beauty',
     'id': 'WQ1978'
   },
   {
-    'name': '钟表珠宝',
+    'name': 'Jewelry',
     'id': 'WQ1979'
   },
   {
-    'name': '手机数码',
+    'name': 'Mobile',
     'id': 'WQ1980'
   },
   {
-    'name': '电脑办公',
+    'name': 'Computer',
     'id': 'WQ1981'
   },
   {
-    'name': '家用电器',
+    'name': 'Appliance',
     'id': 'WQ1982'
   },
   {
-    'name': '食品生鲜',
+    'name': 'Food',
     'id': 'WQ1983'
   },
   {
-    'name': '酒水饮料',
+    'name': 'Liquor',
     'id': 'WQ1984'
   },
   {
-    'name': '母婴童鞋',
+    'name': 'Baby',
     'id': 'WQ1985'
   },
   {
-    'name': '玩具乐器',
+    'name': 'Toys',
     'id': 'WQ1986'
   },
   {
-    'name': '医药保健',
+    'name': 'Medicine',
     'id': 'WQ1987'
   },
   {
-    'name': '计生情趣',
+    'name': 'Adult',
     'id': 'WQ1988'
   },
   {
-    'name': '运动户外',
+    'name': 'Outdoor',
     'id': 'WQ1989'
   },
   {
-    'name': '汽车用品',
+    'name': 'Car',
     'id': 'WQ1990'
   },
   {
-    'name': '家居厨具',
+    'name': 'Kitchen',
     'id': 'WQ1991'
   },
   {
-    'name': '家具家装',
+    'name': 'Furniture',
     'id': 'WQ1992'
   },
   {
-    'name': '礼品鲜花',
+    'name': 'Flower',
     'id': 'WQ1993'
   },
   {
-    'name': '宠物生活',
+    'name': 'Pet',
     'id': 'WQ1994'
   },
   {
-    'name': '生活旅行',
+    'name': 'Travel',
     'id': 'WQ1995'
   },
   {
-    'name': '图书音像',
+    'name': 'Books',
     'id': 'WQ1996'
   },
   {
-    'name': '邮币',
+    'name': 'Coins',
     'id': 'WQ1997'
   },
   {
-    'name': '农资绿植',
+    'name': 'Plants',
     'id': 'WQ1998'
   },
   {
-    'name': '特产馆',
+    'name': 'Featured',
     'id': 'WQ1999'
   },
   {
-    'name': '慕淘金融',
+    'name': 'Finance',
     'id': 'WQ2000'
   },
   {
-    'name': '拍卖',
+    'name': 'Auction',
     'id': 'WQ2001'
   },
   {
-    'name': '房产',
+    'name': 'Real Estate',
     'id': 'WQ2008'
   },
   {
-    'name': '二手商品',
+    'name': '2nd-Hands',
     'id': 'WQ2002'
   }
 ];

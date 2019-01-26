@@ -13,7 +13,8 @@
 			<span>Shopping Cart</span>
 		</router-link>
 		<router-link class="g-tabbar-item" to="/profile">
-			<i class="iconfont icon-personal"></i>
+			<!-- <i class="iconfont icon-personal"></i> -->
+			<i class="iconfont icon-wode"></i>
 			<span>Me</span>
 		</router-link>
 	</div>

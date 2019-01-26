@@ -63,12 +63,14 @@ $tab-item-height: 46px;
 			border-right: 1px solid $border-color;
 			border-bottom: 1px solid $border-color;
 			color: #080808;
-			font-size: $font-size-l;
+			// font-size: $font-size-l;
+			font-size: 12px;
+			word-wrap:break-all;
 			font-weight: bold;
 			text-align: center;
 			line-height: $tab-item-height;
-			@include ellipsis();
-
+			// @include ellipsis();
+			
 			&:last-child{
 				border-bottom: none;
 			}
